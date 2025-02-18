@@ -6,11 +6,20 @@
 /*   By: jeperez- <jeperez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:58:00 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/02/18 14:14:09 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:46:13 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Phonebook.hpp"
+
+PhoneBook::PhoneBook(void)
+{
+	max = 0;
+	oldest = 0;
+}
+
+PhoneBook::~PhoneBook(void)
+{}
 
 void	PhoneBook::start(void)
 {

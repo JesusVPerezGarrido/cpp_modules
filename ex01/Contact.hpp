@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:36:56 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/02/18 14:17:47 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:33:25 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ class Contact {
 		void	brief(void);
 		void	full(void);
 
+		Contact(void);
+		~Contact(void);
+
 	private:
 		std::string	first_name;
 		std::string	last_name;
@@ -31,9 +34,6 @@ class Contact {
 
 		void	set_field(std::string prompt, std::string *field);
 		void	brief_string(std::string str, char tail);
-
-		Contact(void);
-		~Contact(void);
 };
 
 #endif

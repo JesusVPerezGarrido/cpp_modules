@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:07:37 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/02/18 14:20:01 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:32:18 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ Contact::Contact(void)
 
 Contact::~Contact(void)
 {
+	
 }
 
 void	Contact::set(void)

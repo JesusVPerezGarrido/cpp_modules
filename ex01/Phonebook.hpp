@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:58:43 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/02/18 14:13:42 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:33:56 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ class PhoneBook {
 		void	start(void);
 		void	add(void);
 		void	search(void);
+
+		PhoneBook(void);
+		~PhoneBook(void);
 
 	private:
 		Contact	contacts[CONTACT_MAX];
