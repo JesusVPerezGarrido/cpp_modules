@@ -1,13 +1,12 @@
-NAME	:=	phonebook
+NAME	:=	BankAccount
 
 CPP		:=	c++
 
 CFLAGS	:=	-g -Wall -Wextra -Werror
 
-INCS	:=	
-SRCS	:=	main.cpp \
-			Phonebook.cpp \
-			Contact.cpp
+INCS	:=	Account.hpp
+SRCS	:=	Account.cpp \
+			tests.cpp
 OBJS	:=	$(SRCS:.cpp=.o)
 
 all: $(NAME)

@@ -17,39 +17,43 @@
 // ************************************************************************** //
 
 class Account {
-	public:
 
-		typedef Account		t;
 
-		static int	getNbAccounts(void);
-		static int	getTotalAmount(void);
-		static int	getNbDeposits(void);
-		static int	getNbWithdrawals(void);
-		static void	displayAccountsInfos(void);
+public:
 
-		void	makeDeposit(int deposit);
-		bool	makeWithdrawal(int withdrawal);
-		int		checkAmount(void) const;
-		void	displayStatus(void) const;
+	typedef Account		t;
 
-	private:
+	static int	getNbAccounts( void );
+	static int	getTotalAmount( void );
+	static int	getNbDeposits( void );
+	static int	getNbWithdrawals( void );
+	static void	displayAccountsInfos( void );
 
-		static int	_nbAccounts;
-		static int	_totalAmount;
-		static int	_totalNbDeposits;
-		static int	_totalNbWithdrawals;
+	Account( int initial_deposit );
+	~Account( void );
 
-		int			_accountIndex;
-		int			_amount;
-		int			_nbDeposits;
-		int			_nbWithdrawals;
+	void	makeDeposit( int deposit );
+	bool	makeWithdrawal( int withdrawal );
+	int		checkAmount( void ) const;
+	void	displayStatus( void ) const;
 
-		static void	_displayTimestamp(void);
-	
 
-	Account(int initial_deposit );
-	Account(void);
-	~Account(void);
+private:
+
+	static int	_nbAccounts;
+	static int	_totalAmount;
+	static int	_totalNbDeposits;
+	static int	_totalNbWithdrawals;
+
+	static void	_displayTimestamp( void );
+
+	int				_accountIndex;
+	int				_amount;
+	int				_nbDeposits;
+	int				_nbWithdrawals;
+
+	Account( void );
+
 };
 
 
