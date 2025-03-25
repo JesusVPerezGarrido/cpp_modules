@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 16:48:20 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/03/25 10:55:52 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:20:52 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	Account::makeDeposit(int deposit)
 	t::_nbDeposits += 1;
 	t::_totalNbDeposits += 1;
 	std::cout << "nb_deposits:" << t::_nbDeposits << std::endl;
-}
+}	
 
 bool	Account::makeWithdrawal(int withdrawal)
 {

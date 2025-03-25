@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:58:43 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/02/18 16:33:56 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:27:30 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <cstdlib>
 # include "Contact.hpp"
 
 # ifndef CONTACT_MAX
@@ -32,8 +33,8 @@ class PhoneBook {
 
 	private:
 		Contact	contacts[CONTACT_MAX];
-		int		max = 0;
-		int		oldest = 0;
+		int		max;
+		int		oldest;
 };
 
 #endif

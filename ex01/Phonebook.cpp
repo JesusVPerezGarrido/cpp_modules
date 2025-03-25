@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 14:58:00 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/03/25 10:53:28 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:28:23 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ void	PhoneBook::search()
 			break ;
 		if (!option.compare("q"))
 			break ;
-		if (stoi(option) > max || stoi(option) <= 0)
+		if (std::atoi(option.c_str()) > max || std::atoi(option.c_str()) <= 0)
 			std::cout << "Option out of bounds." << std::endl;
 		else
 		{
-			contacts[stoi(option) - 1].full();
+			contacts[std::atoi(option.c_str()) - 1].full();
 			break ;
 		}
 	}

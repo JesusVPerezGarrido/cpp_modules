@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:07:37 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/03/19 12:42:40 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/03/25 15:29:55 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void	Contact::brief_string(std::string str, char tail)
 	int	length;
 
 	length = str.length();
-	std::cout << "length: " << length << std::endl;
 	if (length > 10)
 		std::cout << str.substr(0, 9) << "." << tail;
 	else
