@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:07:37 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/02/18 16:32:18 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/03/19 12:42:40 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,15 @@
 
 Contact::Contact(void)
 {
-	first_name = "";
-	last_name = "";
-	nickname = "";
-	phone_number = "";
-	darkest_secret = "";
+	first_name.clear();
+	last_name.clear();
+	nickname.clear();
+	phone_number.clear();
+	darkest_secret.clear();
 }
 
 Contact::~Contact(void)
 {
-	
 }
 
 void	Contact::set(void)
@@ -69,6 +68,7 @@ void	Contact::brief_string(std::string str, char tail)
 	int	length;
 
 	length = str.length();
+	std::cout << "length: " << length << std::endl;
 	if (length > 10)
 		std::cout << str.substr(0, 9) << "." << tail;
 	else

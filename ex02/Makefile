@@ -2,7 +2,7 @@ NAME	:=	BankAccount
 
 CPP		:=	c++
 
-CFLAGS	:=	-g -Wall -Wextra -Werror
+CFLAGS	:=	-g -Wall -Wextra -Werror -std=c++98
 
 INCS	:=	Account.hpp
 SRCS	:=	Account.cpp \

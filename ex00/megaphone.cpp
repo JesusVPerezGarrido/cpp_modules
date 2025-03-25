@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:21:35 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/02/12 12:30:04 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/03/25 10:48:39 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 class	Megaphone
 {
 	public:
-		void	estatic(void)
+		static void	estatic(void)
 		{
 			std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 		}
 		
-		void	loud(char *str)
+		static void	loud(char *str)
 		{
 			int	index;
 			
@@ -36,16 +36,15 @@ class	Megaphone
 int	main(int ac, char **av)
 {
 	int			index;
-	Megaphone	mp;
 
 	if (ac == 1)
-		mp.estatic();
+		Megaphone::estatic();
 	else
 	{
 		index = 1;
 		while (av[index])
 		{
-			mp.loud(av[index]);
+			Megaphone::loud(av[index]);
 			if (index + 1 != ac)
 				std::cout << " ";
 			index++;
