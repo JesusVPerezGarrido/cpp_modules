@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 11:45:33 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/07/14 16:04:59 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/07/15 12:30:51 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 template <typename T>
 typename T::iterator binarySearch(typename T::iterator begin, typename T::iterator end, typename T::iterator insert);
 
-template <typename T>
 class	BlockVector
 {
 	public:
 		BlockVector(void);
 		BlockVector(const BlockVector &);
-		BlockVector(const T &, const T &);
+		BlockVector(const int &, const int &);
+		BlockVector(const BlockVector &, const BlockVector &);
 
 		~BlockVector(void);
 
@@ -41,11 +41,11 @@ class	BlockVector
 		bool				operator > (const BlockVector &) const;
 
 		const int &getHead(void) const;
-		const std::vector<T> &getContainer(void) const;
+		const std::vector<int> &getContainer(void) const;
 
 	private:
 		int	head;
-		std::vector<T>	container;
+		std::vector<int>	container;
 };
 
 class PmergeMe
@@ -81,9 +81,6 @@ class PmergeMe
 };
 
 template <typename T>
-std::ostream& operator<<(std::ostream& os, const BlockVector<T>& obj);
-
-template <typename T>
-int operator 0 (const int &, const BlockVector<T>&);
+std::ostream& operator<<(std::ostream&, const BlockVector &);
 
 #endif

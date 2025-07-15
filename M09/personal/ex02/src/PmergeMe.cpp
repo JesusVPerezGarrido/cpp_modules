@@ -6,26 +6,22 @@
 /*   By: jeperez- <jeperez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:37:47 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/07/14 16:05:51 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/07/15 12:28:12 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-template <typename T>
-BlockVector<T>::BlockVector(void) :
+BlockVector::BlockVector(void) :
 	head(),
 	container()
 {}
-
-template <typename T>
-BlockVector<T>::BlockVector(const BlockVector &b) :
+BlockVector::BlockVector(const BlockVector &b) :
 	head(b.head),
 	container(b.container)
 {}
 
-template <typename T>
-BlockVector<T>::BlockVector(const int &first, const int &second)
+BlockVector::BlockVector(const int &first, const int &second)
 {
 	if (first > second)
 	{
@@ -41,28 +37,27 @@ BlockVector<T>::BlockVector(const int &first, const int &second)
 	}
 }
 
-template <typename T>
-BlockVector<BlockVector<T> >::BlockVector(const BlockVector<T> &first, const BlockVector<T> &second)
+BlockVector::BlockVector(const BlockVector &first, const BlockVector &second)
 {
 	if (first > second)
 	{
 		head = first.head;
-		container.push_back(second);
-		container.push_back(first);	}
+		
+		container.insert(container.end(), second.getContainer().begin(), second.getContainer().end());
+		container.insert(container.end(), first.getContainer().begin(), first.getContainer().end());
+	}
 	else
 	{
 		head = second.head;
-		container.push_back(first);
-		container.push_back(second);
+		container.insert(container.end(), first.getContainer().begin(), first.getContainer().end());
+		container.insert(container.end(), second.getContainer().begin(), second.getContainer().end());
 	}
 }
 
-template <typename T>
-BlockVector<T>::~BlockVector(void)
+BlockVector::~BlockVector(void)
 {}
 
-template <typename T>
-const BlockVector<T>	&BlockVector<T>::operator = (const BlockVector &b)
+const BlockVector	&BlockVector::operator = (const BlockVector &b)
 {
 	if (this == &b)
 		return (*this);
@@ -71,37 +66,32 @@ const BlockVector<T>	&BlockVector<T>::operator = (const BlockVector &b)
 	return (*this);
 }
 
-template <typename T>
-const int &BlockVector<T>::getHead(void) const
+const int &BlockVector::getHead(void) const
 {
 	return (head);
 }
 
-template <typename T>
-const std::vector<T> &BlockVector<T>::getContainer(void) const
+const std::vector<int> &BlockVector::getContainer(void) const
 {
 	return (container);
 }
 
-template <typename T>
-bool	BlockVector<T>::operator < (const BlockVector &b) const
+bool	BlockVector::operator < (const BlockVector &b) const
 {
 	if (head < b.head)
 		return (true);
 	return (false);
 }
 
-template <typename T>
-bool	BlockVector<T>::operator > (const BlockVector &b) const
+bool	BlockVector::operator > (const BlockVector &b) const
 {
 	return (b < *this);
 }
 
-template <typename T>
-std::ostream& operator<<(std::ostream& os, const BlockVector<T>& obj)
+std::ostream	&operator<<(std::ostream &os, const BlockVector &obj)
 {
 	os << "BlockVector(head: " << obj.getHead() << ", container: {";
-	for (typename std::vector<T>::const_iterator it = obj.getContainer().begin(); it != obj.getContainer().end(); it++)
+	for (std::vector<int>::const_iterator it = obj.getContainer().begin(); it != obj.getContainer().end(); it++)
 	{
 		os << *it;
 		if (it + 1 != obj.getContainer().end())
@@ -159,28 +149,22 @@ void PmergeMe::sortVector(void)
 }
 
 template <typename T>
-int operator + (const int &, const BlockVector<T>& obj)
-{
-
-}
-
-template <typename T>
 void	PmergeMe::mergeVector(std::vector<T> &c)
 {
 	if (c.size() < 2)
 		return ;
 
-	std::cout << "before merging:";
-	for (typename std::vector<T>::iterator it = c.begin(); it != c.end(); it++)
-		std::cout << " " << *it;
-	std::cout << std::endl;
+	// std::cout << "before merging:";
+	// for (typename std::vector<T>::iterator it = c.begin(); it != c.end(); it++)
+	// 	std::cout << " " << *it;
+	// std::cout << std::endl;
 
-	std::vector<BlockVector<T> >	blocks;
+	std::vector<BlockVector> blocks;
 	for (std::size_t i = 0; i + 1 < c.size(); i += 2)
-		blocks.push_back(BlockVector<T>(c[i], c[i + 1]));
+		blocks.push_back(BlockVector(c[i], c[i + 1]));
 
 	std::cout << "after merging:";
-	for (typename std::vector<BlockVector<T> >::iterator it = blocks.begin(); it != blocks.end(); it++)
+	for (typename std::vector<BlockVector>::iterator it = blocks.begin(); it != blocks.end(); it++)
 		std::cout << " " << *it;
 	std::cout << std::endl;
 
