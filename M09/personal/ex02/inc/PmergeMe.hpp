@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 11:45:33 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/07/15 12:30:51 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/07/15 17:23:20 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <deque>
 #include <vector>
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <cstdlib>
 #include <cmath>
@@ -24,28 +25,29 @@
 #include <iterator>
 
 template <typename T>
-typename T::iterator binarySearch(typename T::iterator begin, typename T::iterator end, typename T::iterator insert);
+T	binary_search(T begin, T end, T insert);
 
-class	BlockVector
+class BlockVector
 {
 	public:
 		BlockVector(void);
-		BlockVector(const BlockVector &);
-		BlockVector(const int &, const int &);
-		BlockVector(const BlockVector &, const BlockVector &);
+		BlockVector(const BlockVector &other);
+		BlockVector(int &a);
+		BlockVector(BlockVector &a, BlockVector &b);
+		~BlockVector();
 
-		~BlockVector(void);
+		BlockVector& operator = (const BlockVector &other);
 
-		const BlockVector	&operator = (const BlockVector &);
-		bool				operator < (const BlockVector &) const;
-		bool				operator > (const BlockVector &) const;
+		bool operator < (const BlockVector &other) const;
+		bool operator > (const BlockVector &other) const;
+		bool operator == (const BlockVector &other) const;
 
-		const int &getHead(void) const;
-		const std::vector<int> &getContainer(void) const;
+		int *getHead();
+		std::vector<int *> &getContainer(void);
 
 	private:
-		int	head;
-		std::vector<int>	container;
+		int *head;
+		std::vector<int *> container;
 };
 
 class PmergeMe
@@ -59,19 +61,14 @@ class PmergeMe
 		const PmergeMe	&operator = (const PmergeMe &);
 
 		void	sort(void);
-		
+
 	private:
 		std::string	str;
-	
+
 		void	sortVector(void);
-		template <typename T>
-		void	mergeVector(std::vector<T> &);
-		template <typename T>
-		void	insertVector(std::vector<T>);
-
-		//void	sortDeque(void);
-
-		int	JacobsthalNumber(int n);
+		void	mergeVector(std::vector<BlockVector> &);
+		void	insertVector(std::vector<BlockVector> &);
+		void	applyInsertVector(std::vector<BlockVector> &, std::vector<BlockVector> &);
 
 		class InvalidSyntax : public std::exception
 		{
@@ -80,7 +77,8 @@ class PmergeMe
 		};
 };
 
-template <typename T>
-std::ostream& operator<<(std::ostream&, const BlockVector &);
+int	jacobsthal_number(const int n);
+
+#include "PmergeMe.tpp"
 
 #endif

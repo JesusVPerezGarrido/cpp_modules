@@ -1,4 +1,4 @@
-NAME	:=	PMergeMe
+NAME	:=	PmergeMe
 
 CPP		:=	c++
 CFLAGS	:=	-Wall -Wextra -Werror -std=c++98 -fstandalone-debug -g
