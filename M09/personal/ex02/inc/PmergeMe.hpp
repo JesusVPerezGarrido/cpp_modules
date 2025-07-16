@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 11:45:33 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/07/16 12:13:55 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:56:50 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,58 +19,31 @@
 #include <sstream>
 #include <iostream>
 #include <cstdlib>
-#include <cmath>
 #include <ctime>
 #include <exception>
 #include <iterator>
 
 template <typename T>
-T	binary_search(T begin, T end, T insert);
-
-class BlockVector
+class Block
 {
 	public:
-		BlockVector(void);
-		BlockVector(const BlockVector &other);
-		BlockVector(int &a);
-		BlockVector(BlockVector &a, BlockVector &b);
-		~BlockVector();
+		Block(void);
+		Block(const Block &other);
+		Block(int &a);
+		Block(Block &a, Block &b);
+		~Block();
 
-		BlockVector& operator = (const BlockVector &other);
+		Block	&operator = (const Block &other);
+		bool	operator < (const Block &other) const;
+		bool	operator > (const Block &other) const;
+		bool	operator == (const Block &other) const;
 
-		bool operator < (const BlockVector &other) const;
-		bool operator > (const BlockVector &other) const;
-		bool operator == (const BlockVector &other) const;
-
-		int *getHead();
-		std::vector<int *> &getContainer(void);
-
-	private:
-		int *head;
-		std::vector<int *> container;
-};
-
-class BlockDeque
-{
-	public:
-		BlockDeque(void);
-		BlockDeque(const BlockDeque &other);
-		BlockDeque(int &a);
-		BlockDeque(BlockDeque &a, BlockDeque &b);
-		~BlockDeque();
-
-		BlockDeque& operator = (const BlockDeque &other);
-
-		bool operator < (const BlockDeque &other) const;
-		bool operator > (const BlockDeque &other) const;
-		bool operator == (const BlockDeque &other) const;
-
-		int *getHead();
-		std::deque<int *> &getContainer(void);
+		int	*getHead();
+		T	&getContainer(void);
 
 	private:
-		int *head;
-		std::deque<int *> container;
+		int	*head;
+		T	container;
 };
 
 class PmergeMe
@@ -89,13 +62,13 @@ class PmergeMe
 		std::string	str;
 
 		double	sortVector(void);
-		void	mergeVector(std::vector<BlockVector> &);
-		void	insertVector(std::vector<BlockVector> &);
-		void	applyInsertVector(std::vector<BlockVector> &, std::vector<BlockVector> &);
+		void	mergeVector(std::vector<Block<std::vector<int *> > > &);
+		void	insertVector(std::vector<Block<std::vector<int *> > > &);
+		void	applyInsertVector(std::vector<Block<std::vector<int *> > > &, std::vector<Block<std::vector<int *> > > &);
 		double	sortDeque(void);
-		void	mergeDeque(std::deque<BlockDeque> &);
-		void	insertDeque(std::deque<BlockDeque> &);
-		void	applyInsertDeque(std::deque<BlockDeque> &, std::deque<BlockDeque> &);
+		void	mergeDeque(std::deque<Block<std::deque<int *> > > &);
+		void	insertDeque(std::deque<Block<std::deque<int *> > > &);
+		void	applyInsertDeque(std::deque<Block<std::deque<int *> > > &, std::deque<Block<std::deque<int *> > > &);
 
 		class InvalidSyntax : public std::exception
 		{
@@ -104,6 +77,9 @@ class PmergeMe
 		};
 };
 
+
+template <typename T>
+T	binary_search(T begin, T end, T insert);
 int	jacobsthal_number(const int n);
 
 #include "PmergeMe.tpp"
