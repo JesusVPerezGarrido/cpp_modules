@@ -1,7 +1,7 @@
 NAME	:=	PmergeMe
 
 CPP		:=	c++
-CFLAGS	:=	-Wall -Wextra -Werror -std=c++98 -fstandalone-debug -g
+CFLAGS	:=	-Wall -Wextra -Werror -std=c++98
 
 FILES	:=	main.cpp \
 			PmergeMe.cpp

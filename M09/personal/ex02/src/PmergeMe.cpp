@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:37:47 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/07/16 12:53:27 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/07/16 13:01:51 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ PmergeMe::PmergeMe(int ac, char **av)
 				str += " ";
 		}
 	}
+	if (str.find_first_not_of("0123456789 ") != str.npos)
+		throw InvalidSyntax();
 }
 
 PmergeMe::PmergeMe(const PmergeMe &pmm) :
