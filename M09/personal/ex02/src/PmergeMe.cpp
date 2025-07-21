@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:37:47 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/07/16 13:01:51 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/07/16 14:44:41 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ double PmergeMe::sortVector(void)
 	clock_t	end;
 	std::vector<int>	array;
 	std::vector<Block<std::vector<int *> > > blocks;
+	
 	std::istringstream iss(str);
 	int num;
-
 	while (iss >> num)
 	{
 		if (num < 0)
