@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:24:02 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/07/07 16:48:14 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:35:01 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ void	RPN::calculate(std::string exp)
 	std::string::iterator	it = exp.begin();
 	while (it != exp.end())
 	{
-		if (*it >= '0' && *it <= '9')
-			container.push(*it - '0');
-		else if (*it == '+' || *it == '-' || *it == '*' || *it == '/')
-			operate(container, *it);
-		else if (!std::isspace(*it))
-			throw InvalidCharacterFound();
+		if (!std::isspace(*it))
+		{
+			if (*it >= '0' && *it <= '9')
+				container.push(*it - '0');
+			else if (*it == '+' || *it == '-' || *it == '*' || *it == '/')
+				operate(container, *it);
+			if (it + 1 != exp.end() && !std::isspace(*(it + 1)))
+				throw BadInputFound();
+		}
 		it++;
 	}
 	if (container.size() != 1)
@@ -63,6 +66,8 @@ void RPN::operate(std::stack<int> &c, char op)
 		break;
 
 	case '/':
+		if (num2 == 0)
+			throw InvalidOperation();
 		c.push(num1 / num2);
 		break;
 		
@@ -79,4 +84,9 @@ const char	*RPN::InvalidCharacterFound::what(void) const throw()
 const char	*RPN::BadInputFound::what(void) const throw()
 {
 	return "Invalid syntax";
+}
+
+const char	*RPN::InvalidOperation::what(void) const throw()
+{
+	return "Invalid operation";
 }

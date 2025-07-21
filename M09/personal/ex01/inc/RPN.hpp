@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:20:41 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/07/07 16:35:36 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:27:08 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ class RPN
 				const char	*what(void) const throw();
 		};
 		class BadInputFound : public std::exception
+		{
+			public:
+				const char	*what(void) const throw();
+		};
+		class InvalidOperation : public std::exception
 		{
 			public:
 				const char	*what(void) const throw();

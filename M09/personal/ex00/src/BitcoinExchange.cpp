@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 12:56:48 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/07/07 15:52:29 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:01:50 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	BitcoinExchange::calculateValue(std::string inputfile)
 {
 	std::ifstream	file;
 	std::string		buf;
+	bool			first_flag = true;
 
 	file.open(inputfile.c_str());
 	if (!file.is_open())
@@ -103,6 +104,13 @@ void	BitcoinExchange::calculateValue(std::string inputfile)
 		std::getline(file, buf);
 		if (buf.empty())
 			continue ;
+
+		if (first_flag && buf == "date | value")
+		{
+			first_flag = false;
+			continue;
+		}
+		first_flag = false;
 		if (buf.find('|') == buf.npos)
 		{
 			std::cout << "Error: bad input => " << buf << std::endl;
