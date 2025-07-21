@@ -6,7 +6,7 @@
 /*   By: jeperez- <jeperez-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 12:56:48 by jeperez-          #+#    #+#             */
-/*   Updated: 2025/07/21 16:01:50 by jeperez-         ###   ########.fr       */
+/*   Updated: 2025/07/21 16:46:03 by jeperez-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,6 +179,11 @@ bool	BitcoinExchange::validAmount(const std::string str)
 	if (str.find_first_not_of("0123456789.-") != str.npos)
 	{
 		std::cout << "Error: invalid character => " << str << std::endl;
+		return (false);
+	}
+	if ((str.find(".") != str.npos  && str.find(".", str.find(".") + 1) != str.npos) || str.find_first_of("0123456789") == str.npos)
+	{
+		std::cout << "Error: invalid syntax => " << str << std::endl;
 		return (false);
 	}
 	double	num	= std::atof(str.c_str());
